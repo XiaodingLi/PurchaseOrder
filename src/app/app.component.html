@@ -1,0 +1,77 @@
+<div class="main-area">
+  <div class="content-area">
+    <div class="header">
+      <h1>Manager Purchase Order</h1>
+    </div>
+
+    <div class="container">
+      <!-- Purchase Order< form-->
+
+      <div class="form-area">
+        <h3>Create Purchase Order, Please Choose csv or xlsx File To Upload</h3>
+
+        <form #usersForm="ngForm" (ngSubmit)="onPOItemBulkCreate(usersForm.value)">
+          <!--
+          <label>Date</label>
+          <input type="date" [value]="currentD" name = "theDate" id ="theDate" ngModel formControlName="date"/> -->
+
+          <label>Vendor Name:</label>
+          <input type="text" name = "vendorName" ngModel required vendorName>
+          &nbsp;&nbsp;&nbsp;&nbsp;          
+
+          <input type="file" #fileImportInput name="FileUpload" id="csvFileUpload" (change)="csvImport($event)" accept=".csv, .xlsx">
+          <input type="submit" value="Create PO" [disabled]="!usersForm.valid">
+
+        </form>
+        <h2>{{operationResult}}</h2>
+      </div>
+
+      <!--Display po area-->
+      <div class="product-display-area">
+        <h3>All PO Items</h3>
+        <!--
+        <table id="products">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let product of allProducts; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{product.pName}}</td>
+            <td>{{product.desc}}</td>
+            <td>{{product.price}}</td>
+            <td><button class="btn-delete">Delete</button></td>
+          </tr>
+        </table>-->
+        <table id="users">
+          <tr>
+            <th>#</th>
+            <th>Venodr</th>
+            <th>Date</th>
+            <th>Model</th>
+            <th>UnitPrice</th>
+            <th>Quantity</th>
+          </tr>
+          <tr *ngFor="let poItem of allPOItems; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{poItem.vendorName}}</td>
+            <td>{{poItem.dateStr}}</td>
+            <td>{{poItem.modelName}}</td>
+            <td>{{poItem.unitPrice}}</td>
+            <td>{{poItem.quantity}}</td>
+        </table>
+        <hr>
+        <div class="action-btn-container">
+          <!--<button class="btn-fetch" (click)="onProductsFetch()">Fetch Product</button>-->
+          <button class="btn-fetch" (click)="fetchPOItems()">Fetch POItems</button>
+          <!--<button class="btn-clear" (click)="onProductsFetch()">Fetch Product From DB</button>-->
+          <button class="btn-clear" (click)="csvExport()">Download POItems</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
