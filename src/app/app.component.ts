@@ -84,8 +84,6 @@ csvImport($event: any){
     this.http.post<{name: string}>('/poitem/batch',
     this.newPOItems)
     .subscribe((res) => {
-      console.log('the new Generated===', res);
-      console.log('the new Generated==res==', res["result"]);
       if (res["result"]=== 'success'){
         this.operationResult = "SUCCESS on inserting PO info!";
       } else {

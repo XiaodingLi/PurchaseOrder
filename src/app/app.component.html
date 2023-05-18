@@ -11,9 +11,6 @@
         <h3>Create Purchase Order, Please Choose csv or xlsx File To Upload</h3>
 
         <form #usersForm="ngForm" (ngSubmit)="onPOItemBulkCreate(usersForm.value)">
-          <!--
-          <label>Date</label>
-          <input type="date" [value]="currentD" name = "theDate" id ="theDate" ngModel formControlName="date"/> -->
 
           <label>Vendor Name:</label>
           <input type="text" name = "vendorName" ngModel required vendorName>
@@ -26,26 +23,9 @@
         <h2>{{operationResult}}</h2>
       </div>
 
-      <!--Display po area-->
+      <!--Display po item area-->
       <div class="product-display-area">
         <h3>All PO Items</h3>
-        <!--
-        <table id="products">
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th></th>
-          </tr>
-          <tr *ngFor="let product of allProducts; index as i">
-            <td>{{i + 1}}</td>
-            <td>{{product.pName}}</td>
-            <td>{{product.desc}}</td>
-            <td>{{product.price}}</td>
-            <td><button class="btn-delete">Delete</button></td>
-          </tr>
-        </table>-->
         <table id="users">
           <tr>
             <th>#</th>
