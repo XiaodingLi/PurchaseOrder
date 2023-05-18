@@ -11,11 +11,10 @@
         <h3>Create Purchase Order, Please Choose csv or xlsx File To Upload</h3>
 
         <form #usersForm="ngForm" (ngSubmit)="onPOItemBulkCreate(usersForm.value)">
-
+          <!-- Operation Date will be provided according to current date, automatically by JS instead of UI, to prevent User Mis-Operation-->
           <label>Vendor Name:</label>
           <input type="text" name = "vendorName" ngModel required vendorName>
-          &nbsp;&nbsp;&nbsp;&nbsp;          
-
+          &nbsp;&nbsp;&nbsp;&nbsp;
           <input type="file" #fileImportInput name="FileUpload" id="csvFileUpload" (change)="csvImport($event)" accept=".csv, .xlsx">
           <input type="submit" value="Create PO" [disabled]="!usersForm.valid">
 
